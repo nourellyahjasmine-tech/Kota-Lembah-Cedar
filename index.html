@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kota Lembah Cedar — rumah bagi puisi, alam, cinta, dan perenungan.">
+  <title>Kota Lembah Cedar | A Poetry Gallery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory: #f5f3ec;
+      --paper: #fbfaf6;
+      --sage: #899581;
+      --deep: #35443b;
+      --grey: #777d76;
+      --line: #deded3;
+      --cedar: #536354;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--deep);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245,243,236,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: .3px;
+    }
+
+    .brand small {
+      display: block;
+      font: 9px "DM Sans", sans-serif;
+      letter-spacing: 3px;
+      color: var(--grey);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--grey);
+    }
+
+    .nav-links a:hover { color: var(--deep); }
+
+    .menu-button {
+      display: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      padding: 8px 12px;
+      color: var(--deep);
+      border-radius: 4px;
+    }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(35,49,42,.35), rgba(35,49,42,.55)),
+        radial-gradient(ellipse at 50% 35%, #d7ddd3 0%, #89988b 38%, #526456 78%);
+      color: white;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse at 20% 75%, rgba(238,239,228,.30), transparent 35%),
+        radial-gradient(ellipse at 80% 65%, rgba(238,239,228,.25), transparent 38%);
+      pointer-events: none;
+    }
+
+    /* Ilustrasi gerbang U sementara.
+       Bisa diganti dengan foto/ilustrasi gerbang asli nanti. */
+    .gate {
+      position: absolute;
+      width: min(460px, 80vw);
+      height: 230px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 22px solid rgba(225,225,211,.55);
+      border-right: 22px solid rgba(225,225,211,.55);
+      border-top: 22px solid rgba(225,225,211,.55);
+      border-radius: 190px 190px 0 0;
+      opacity: .65;
+      box-shadow: 0 0 35px rgba(255,255,255,.15);
+    }
+
+    .gate::before {
+      content: "❀  ❀  ❀  ❀  ❀  ❀  ❀";
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #f8f7ed;
+      font-size: 19px;
+      letter-spacing: 9px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 15px 180px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 10px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 82px);
+      margin: 0;
+    }
+
+    .hero p {
+      max-width: 540px;
+      margin: 20px auto 30px;
+      font-size: 14px;
+      color: rgba(255,255,255,.9);
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid currentColor;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+
+    .button:hover {
+      background: white;
+      color: var(--deep);
+    }
+
+    section { padding: 90px 0; }
+
+    .section-heading {
+      max-width: 620px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow { color: var(--sage); }
+
+    h2 {
+      font-size: clamp(36px, 5vw, 52px);
+      margin: 8px 0 15px;
+    }
+
+    .section-heading p {
+      color: var(--grey);
+      font-size: 14px;
+    }
+
+    .intro {
+      background: var(--paper);
+      text-align: center;
+    }
+
+    .intro-text {
+      max-width: 720px;
+      margin: auto;
+      color: var(--grey);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 23px;
+      line-height: 1.6;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      min-height: 220px;
+      padding: 30px;
+      background: #e9ebe3;
+      border: 1px solid var(--line);
+    }
+
+    .feature .number {
+      color: var(--sage);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .feature h3 {
+      font-size: 29px;
+      margin: 20px 0 8px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    .gallery { background: var(--paper); }
+
+    .poems {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .poem-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: var(--ivory);
+    }
+
+    .poem-card .category {
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 9px;
+    }
+
+    .poem-card h3 {
+      font-size: 30px;
+      margin: 16px 0 10px;
+    }
+
+    .poem-card p {
+      color: var(--grey);
+      font-size: 13px;
+    }
+
+    .collection {
+      background: #e8ebe4;
+      text-align: center;
+    }
+
+    .collection-inner {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .collection p {
+      color: var(--grey);
+      font-size: 14px;
+    }
+
+    .collection .button {
+      margin-top: 18px;
+      color: var(--deep);
+    }
+
+    .contact {
+      text-align: center;
+      background: var(--paper);
+    }
+
+    footer {
+      padding: 35px 0;
+      text-align: center;
+      font-size: 11px;
+      color: var(--grey);
+      border-top: 1px solid var(--line);
+    }
+
+    footer strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 23px;
+      color: var(--deep);
+      font-weight: 500;
+    }
+
+    @media (max-width: 720px) {
+      .menu-button { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: var(--ivory);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .features, .poems {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { min-height: 560px; }
+      section { padding: 68px 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      Kota Lembah Cedar
+      <small>A place for poetry</small>
+    </a>
+
+    <button class="menu-button" id="menuButton" aria-label="Buka menu">
+      Menu ☰
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#tentang">Tentang Kota</a>
+      <a href="#lembah">Lembah</a>
+      <a href="#puisi">Galeri Puisi</a>
+      <a href="#koleksi">Koleksi</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="gate"></div>
+    <div class="hero-content">
+      <div class="eyebrow">Welcome to a quiet little town</div>
+      <h1>Kota Lembah Cedar</h1>
+      <p>
+        Sebuah kota kecil di antara tujuh lembah,
+        tempat kabut menjaga rahasia dan setiap puisi
+        menemukan rumahnya.
+      </p>
+      <a class="button" href="#tentang">Masuki Kota</a>
+    </div>
+  </section>
+
+  <section class="intro" id="tentang">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">The story of our town</div>
+        <h2>Di Balik Kabut Cedar</h2>
+      </div>
+      <p class="intro-text">
+        Di sebuah lembah yang dikelilingi hutan cedar,
+        berdiri sebuah kota kecil yang hampir selalu
+        diselimuti kabut. Empat sungai mengalir dari
+        tujuh lembah, sementara bunga bakung putih
+        menjadi saksi bagi cerita-cerita yang tinggal
+        di dalamnya.
+      </p>
+    </div>
+  </section>
+
+  <section id="lembah">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Explore the landscape</div>
+        <h2>Tujuh Lembah, Empat Sungai</h2>
+        <p>
+          Setiap lembah memiliki pemandangan dan kisahnya
+          sendiri. Dari sana, empat sungai mengalir menuju
+          empat penjuru mata angin.
+        </p>
+      </div>
+
+      <div class="features">
+        <article class="feature">
+          <div class="number">01 — 07</div>
+          <h3>Seven Valleys</h3>
+          <p>Tujuh lembah yang mengelilingi kota, dengan satu lembah menjulang paling tinggi.</p>
+        </article>
+
+        <article class="feature">
+          <div class="number">NORTH · EAST · SOUTH · WEST</div>
+          <h3>Four Rivers</h3>
+          <p>Empat aliran sungai yang membawa kehidupan dari pegunungan menuju kota.</p>
+        </article>
+
+        <article class="feature">
+          <div class="number">THE TOWN CENTER</div>
+          <h3>Meeting Hall</h3>
+          <p>Balai pertemuan di pusat kota, tempat kisah dan kehidupan bertemu.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="puisi">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Words from the heart</div>
+        <h2>Cedar Poetry Gallery</h2>
+        <p>
+          Sebuah ruang untuk puisi tentang cinta,
+          alam, kedamaian, spiritualitas, dan kehidupan.
+        </p>
+      </div>
+
+      <div class="poems">
+        <article class="poem-card">
+          <div class="category">Nature & Peace</div>
+          <h3>Suara Hening Alam</h3>
+          <p>
+            Tentang keheningan, pepohonan, dan hubungan
+            manusia dengan alam.
+          </p>
+        </article>
+
+        <article class="poem-card">
+          <div class="category">Love & Affection</div>
+          <h3>Dalam Hadirat Cinta</h3>
+          <p>
+            Tentang kasih, kerinduan, dan ruang lembut
+            yang ditemukan di dalam hati.
+          </p>
+        </article>
+
+        <article class="poem-card">
+          <div class="category">Reflection & Life</div>
+          <h3>Jejak Kehidupan</h3>
+          <p>
+            Tentang perjalanan, kenangan, dan makna
+            dari setiap perjumpaan.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection" id="koleksi">
+    <div class="container collection-inner">
+      <div class="eyebrow">Digital poetry collection</div>
+      <h2>Karya yang Bisa Dibawa Pulang</h2>
+      <p>
+        Temukan kumpulan puisi digital, poster,
+        dan jurnal refleksi dari Kota Lembah Cedar.
+        Koleksi pertama sedang dipersiapkan.
+      </p>
+      <a class="button" href="#kontak">Tanyakan Koleksi</a>
+    </div>
+  </section>
+
+  <section class="contact" id="kontak">
+    <div class="container">
+      <div class="eyebrow">A little note from our town</div>
+      <h2>Terima Kasih Telah Berkunjung</h2>
+      <p>
+        Semoga kamu menemukan sedikit ketenangan
+        di antara kata-kata yang tinggal di sini.
+      </p>
+      <p><strong>Poetry by Nuriella Huang</strong></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>Kota Lembah Cedar</strong>
+    An Independent Digital Poetry Gallery
+    <p>© <span id="year"></span> Kota Lembah Cedar. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const menuButton = document.getElementById("menuButton");
+  const navLinks = document.getElementById("navLinks");
+
+  menuButton.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+    });
+  });
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
+                                                    </html>
+                                                    
